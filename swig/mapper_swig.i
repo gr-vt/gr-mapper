@@ -15,8 +15,8 @@
 #include "mapper/preamble_insert_bb.h"
 #include "mapper/preamble_sync_cc.h"
 #include "mapper/preamble_generator.h"
-#include "mapper/preamble_sync_decode.h"
-#include "mapper/preamble_sync_decode_hard.h"
+#include "mapper/preamble_sync_demapper.h"
+#include "mapper/preamble_sync_demapper_hard.h"
 #include "mapper/preamble_strip.h"
 #include "mapper/timeslot_demux.h"
 %}
@@ -36,10 +36,10 @@ GR_SWIG_BLOCK_MAGIC2(mapper, mapper_msg);
 GR_SWIG_BLOCK_MAGIC2(mapper, preamble_insert_bb);
 %include "mapper/preamble_sync_cc.h"
 GR_SWIG_BLOCK_MAGIC2(mapper, preamble_sync_cc);
-%include "mapper/preamble_sync_decode.h"
-GR_SWIG_BLOCK_MAGIC2(mapper, preamble_sync_decode);
-%include "mapper/preamble_sync_decode_hard.h"
-GR_SWIG_BLOCK_MAGIC2(mapper, preamble_sync_decode_hard);
+%include "mapper/preamble_sync_demapper.h"
+GR_SWIG_BLOCK_MAGIC2(mapper, preamble_sync_demapper);
+%include "mapper/preamble_sync_demapper_hard.h"
+GR_SWIG_BLOCK_MAGIC2(mapper, preamble_sync_demapper_hard);
 %include "mapper/preamble_strip.h"
 GR_SWIG_BLOCK_MAGIC2(mapper, preamble_strip);
 %include "mapper/timeslot_demux.h"
