@@ -1,3 +1,2 @@
 
-This out of tree module contains several different framers and deframers which may be used with GNU Radio flowgraphs
-
+This out of tree module contains a number of blocks to help perform mapping between bits and symbols
