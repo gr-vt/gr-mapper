@@ -24,8 +24,8 @@ install(FILES
     mapper_demapper_msg.xml
     mapper_preamble_insert_bb.xml
     mapper_preamble_sync_cc.xml
-    mapper_preamble_sync_decode.xml
-    mapper_preamble_sync_decode_hard.xml
+    mapper_preamble_sync_demapper.xml
+    mapper_preamble_sync_demapper_hard.xml
     mapper_preamble_strip.xml
     mapper_timeslot_demux.xml DESTINATION share/gnuradio/grc/blocks
 )

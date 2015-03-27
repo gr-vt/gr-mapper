@@ -34,8 +34,8 @@ list(APPEND mapper_sources
     preamble_sync_cc_impl.cc
     pream_sync_correlator.cc
     preamble_generator.cc
-    preamble_sync_decode_impl.cc
-    preamble_sync_decode_hard_impl.cc
+    preamble_sync_demapper_impl.cc
+    preamble_sync_demapper_hard_impl.cc
     preamble_strip_impl.cc
     timeslot_demux_impl.cc
 )

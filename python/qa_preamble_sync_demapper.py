@@ -23,7 +23,7 @@ from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import mapper_swig as mapper
 
-class qa_preamble_sync_decode (gr_unittest.TestCase):
+class qa_preamble_sync_demapper (gr_unittest.TestCase):
 
     def setUp (self):
         self.tb = gr.top_block ()
@@ -38,4 +38,4 @@ class qa_preamble_sync_decode (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_preamble_sync_decode, "qa_preamble_sync_decode.xml")
+    gr_unittest.run(qa_preamble_sync_demapper, "qa_preamble_sync_demapper.xml")

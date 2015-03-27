@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
   <name>Decode using Preamble Synch</name>
-  <key>mapper_preamble_sync_decode</key>
+  <key>mapper_preamble_sync_demapper_hard</key>
   <category>mapper</category>
   <import>import mapper</import>
-  <make>mapper.preamble_sync_decode($width, $preamble, $modtype, $symbol_map, $acquire_bit_thresh, $loose_bit_thresh, $passthrough)</make>
+  <make>mapper.preamble_sync_demapper_hard($width, $preamble, $modtype, $symbol_map, $acquire_bit_thresh, $loose_bit_thresh, $passthrough)</make>
 
   <param>
     <name>Width</name>
@@ -50,7 +50,7 @@
     <type>int</type>
   </param>
   <param>
-    <name>Bits for Loss of Sync</name>
+    <name>Bits for Loose Trigger</name>
     <key>loose_bit_thresh</key>
     <value>3</value>
     <type>int</type>
@@ -76,7 +76,7 @@
 
   <source>
     <name>out</name>
-    <type>float</type>
+    <type>byte</type>
   </source>
 
   <doc>

@@ -23,7 +23,7 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "preamble_sync_decode_hard_impl.h"
+#include "preamble_sync_demapper_hard_impl.h"
 #include <stdio.h>
 #include <stdexcept>
 #include <cmath>
@@ -32,22 +32,22 @@
 namespace gr {
   namespace mapper {
 
-    preamble_sync_decode_hard::sptr
-    preamble_sync_decode_hard::make(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
+    preamble_sync_demapper_hard::sptr
+    preamble_sync_demapper_hard::make(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
                                const std::vector<int> &symbol_map, int acquire_bit_thresh, int loose_bit_thresh,
                                bool passthrough)
     {
       return gnuradio::get_initial_sptr
-        (new preamble_sync_decode_hard_impl(width, preamble, modtype, symbol_map, acquire_bit_thresh, loose_bit_thresh, passthrough));
+        (new preamble_sync_demapper_hard_impl(width, preamble, modtype, symbol_map, acquire_bit_thresh, loose_bit_thresh, passthrough));
     }
 
     /*
      * The private constructor
      */
-    preamble_sync_decode_hard_impl::preamble_sync_decode_hard_impl(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
+    preamble_sync_demapper_hard_impl::preamble_sync_demapper_hard_impl(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
                                                          const std::vector<int> &symbol_map, int acquire_bit_thresh, int loose_bit_thresh,
                                                          bool passthrough)
-      : gr::block("preamble_sync_decode_hard",
+      : gr::block("preamble_sync_demapper_hard",
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
               gr::io_signature::make(1, 1, sizeof(uint8_t))),//gr::io_signature::make(1, 1, sizeof(float))),
         d_const(modtype, symbol_map),
@@ -72,12 +72,12 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    preamble_sync_decode_hard_impl::~preamble_sync_decode_hard_impl()
+    preamble_sync_demapper_hard_impl::~preamble_sync_demapper_hard_impl()
     {
     }
 
     void
-    preamble_sync_decode_hard_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
+    preamble_sync_demapper_hard_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
     {
         /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
         int payload_sym_count = d_width/d_bps;
@@ -94,7 +94,7 @@ namespace gr {
     }
 
     int
-    preamble_sync_decode_hard_impl::general_work (int noutput_items,
+    preamble_sync_demapper_hard_impl::general_work (int noutput_items,
                        gr_vector_int &ninput_items,
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)

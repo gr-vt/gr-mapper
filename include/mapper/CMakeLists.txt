@@ -31,8 +31,8 @@ install(FILES
     preamble_sync_cc.h
     pream_sync_correlator.h
     preamble_generator.h
-    preamble_sync_decode.h
-    preamble_sync_decode_hard.h
+    preamble_sync_demapper.h
+    preamble_sync_demapper_hard.h
     preamble_strip.h
     timeslot_demux.h DESTINATION include/mapper
 )

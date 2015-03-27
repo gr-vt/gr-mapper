@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
-/*
- * Copyright 2015 Free Software Foundation, Inc 
+/* 
+ * Copyright 2015 Free Software Foundation, Inc
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,15 +18,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_IMPL_H
-#define INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_IMPL_H
+#ifndef INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_IMPL_H
+#define INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_IMPL_H
 
-#include <mapper/preamble_sync_decode_hard.h>
+#include <mapper/preamble_sync_demapper.h>
 
 namespace gr {
   namespace mapper {
 
-    class preamble_sync_decode_hard_impl : public preamble_sync_decode_hard
+    class preamble_sync_demapper_impl : public preamble_sync_demapper
     {
      private:
       std::vector<uint8_t> d_preamble;
@@ -51,10 +51,10 @@ namespace gr {
 
 
      public:
-      preamble_sync_decode_hard_impl(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
+      preamble_sync_demapper_impl(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
                                 const std::vector<int> &symbol_map, int acquire_bit_thresh, int loose_bit_thresh,
                                 bool passthrough);
-      ~preamble_sync_decode_hard_impl();
+      ~preamble_sync_demapper_impl();
 
       // Where all the action really happens
       void forecast (int noutput_items, gr_vector_int &ninput_items_required);
@@ -68,5 +68,5 @@ namespace gr {
   } // namespace mapper
 } // namespace gr
 
-#endif /* INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_IMPL_H */
+#endif /* INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_IMPL_H */
 

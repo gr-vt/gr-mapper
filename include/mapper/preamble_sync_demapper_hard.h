@@ -19,8 +19,8 @@
  */
 
 
-#ifndef INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_H
-#define INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_H
+#ifndef INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_H
+#define INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_H
 
 #include <mapper/api.h>
 #include <gnuradio/block.h>
@@ -35,10 +35,10 @@ namespace gr {
      * \ingroup mapper
      *
      */
-    class MAPPER_API preamble_sync_decode : virtual public gr::block
+    class MAPPER_API preamble_sync_demapper_hard : virtual public gr::block
     {
      public:
-      typedef boost::shared_ptr<preamble_sync_decode> sptr;
+      typedef boost::shared_ptr<preamble_sync_demapper_hard> sptr;
 
       static sptr make(int width, const std::vector<unsigned char> &preamble, modtype_t modtype,
                        const std::vector<int> &symbol_map, int acquire_bit_thresh, int loose_bit_thresh,
@@ -48,5 +48,5 @@ namespace gr {
   } // namespace mapper
 } // namespace gr
 
-#endif /* INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_H */
+#endif /* INCLUDED_MAPPER_PREAMBLE_SYNC_DECODE_HARD_H */
 
