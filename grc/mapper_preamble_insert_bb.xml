@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##Preamble Insertion
+###################################################
+ -->
+<block>
+  <name>Preamble Insert</name>
+  <key>mapper_preamble_insert_bb</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.preamble_insert_bb($width, $preamble)</make>
+    <callback>mapper.set_width($width)</callback>
+    <callback>mapper.set_preamble($preamble)</callback>
+  <param>
+    <name>Width</name>
+    <key>width</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Preamble</name>
+    <key>preamble</key>
+    <type>int_vector</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+
+  <doc>
+      Operates on unpacked bytes. 1 bit from each byte.
+
+      Width, the number of bytes before the next preamble
+        (ie: one preamble for every width of byte input)
+
+      Preamble, syncronization preamble
+        (ie: 1,0,0,1,1,1,0,0,0,0,1,1)
+  </doc>
+</block>

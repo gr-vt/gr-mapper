@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<block>
+  <name>Timeslot Demux</name>
+  <key>mapper_timeslot_demux</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.timeslot_demux($nusers, $syncd, $ts_id, $ts_len)</make>
+
+  <param>
+    <name>Number of Timeslots</name>
+    <key>nusers</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Already synchronized</name>
+    <key>syncd</key>
+    <value>True</value>
+    <type>enum</type>
+      <option>
+        <name>True</name>
+        <key>True</key>
+      </option>
+      <option>
+        <name>False</name>
+        <key>False</key>
+      </option>
+  </param>
+  <param>
+    <name>Timeslot Identifier</name>
+    <key>ts_id</key>
+    <value>[0,0,0,0]</value>
+    <type>int_vector</type>
+  </param>
+  <param>
+    <name>Timeslot Length</name>
+    <key>ts_len</key>
+    <type>int</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

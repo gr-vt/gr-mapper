@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<block>
+  <name>Preamble Strip</name>
+  <key>mapper_preamble_strip</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.preamble_strip($user_len, $synch)</make>
+
+  <param>
+    <name>Preable Length</name>
+    <key>user_len</key>
+    <value>10</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Preamble</name>
+    <key>synch</key>
+    <value>[0,0,0,0]</value>
+    <type>int_vector</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

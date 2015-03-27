@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<block>
+  <name>Preamble Synchronizer</name>
+  <key>mapper_preamble_sync_cc</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.preamble_sync_cc($width, $preamble, $modtype, $symbol_map, $gtas, $gtls)</make>
+
+  <param>
+    <name>Width</name>
+    <key>width</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Preamble</name>
+    <key>preamble</key>
+    <type>int_vector</type>
+  </param>
+  <param>
+    <name>Modulaton</name>
+    <key>modtype</key>
+    <type>enum</type>
+    <option>
+        <name>BPSK</name>
+        <key>mapper.BPSK</key>
+    </option>
+    <option>
+        <name>Pi/2BPSK</name>
+        <key>mapper.P2BPSK</key>
+    </option>
+    <option>
+        <name>QPSK</name>
+        <key>mapper.QPSK</key>
+    </option>
+    <option>
+        <name>8PSK</name>
+        <key>mapper.PSK8</key>
+    </option>
+  </param>
+  <param>
+    <name>Symbol Values</name>
+    <key>symbol_map</key>
+    <value>[0,1]</value>
+    <type>int_vector</type>
+  </param> 
+  <param>
+    <name>Garble Thresh Acquire Sync</name>
+    <key>gtas</key>
+    <value>0.97</value>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Garble Thresh Loose Sync</name>
+    <key>gtls</key>
+    <value>0.9</value>
+    <type>real</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+
+  <doc>
+      Garble Thresh Acquire Sync - Cross Correlation value to trigger Acquire condition (0.97 ~trial and error)
+      Garble Thresh Loose Sync - Cross Correlation value to trigger Loose condition (0.90 ~trial and error)
+      Width - # of bits in each block including the length of the preamble
+      Preamble - Create a variable in grc that uses the built in Preamble_Gen function (see below)
+        
+        pream_len = 84
+        preamble = (mapper.preamble_generator(pream_len,511,1033)).get_preamble()
+                                             (length,  seed, mask)
+  </doc>
+
+</block>

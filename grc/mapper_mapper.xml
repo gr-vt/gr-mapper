@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<block>
+  <name>Bit to Symbol Mapper</name>
+  <key>mapper_mapper</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.mapper($modtype, $symbol_values)</make>
+  <param>
+    <name>Modulaton</name>
+    <key>modtype</key>
+    <type>enum</type>
+    <option>
+        <name>BPSK</name>
+        <key>mapper.BPSK</key>
+    </option>
+    <option>
+        <name>Pi/2BPSK</name>
+        <key>mapper.P2BPSK</key>
+    </option>
+    <option>
+        <name>QPSK</name>
+        <key>mapper.QPSK</key>
+    </option>
+    <option>
+        <name>8PSK</name>
+        <key>mapper.PSK8</key>
+    </option>
+  </param>
+
+  <param>
+    <name>Symbol Values</name>
+    <key>symbol_values</key>
+    <value>[0,1]</value>
+    <type>int_vector</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

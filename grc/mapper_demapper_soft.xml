@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<block>
+  <name>Symbol to Bit Soft Demapper</name>
+  <key>mapper_demapper_soft</key>
+  <category>mapper</category>
+  <import>import mapper</import>
+  <make>mapper.demapper_soft($modtype, $symbol_values)</make>
+
+  <param>
+    <name>Modulaton</name>
+    <key>modtype</key>
+    <type>enum</type>
+    <option>
+        <name>BPSK</name>
+        <key>mapper.BPSK</key>
+    </option>
+    <option>
+        <name>Pi/2BPSK</name>
+        <key>mapper.P2BPSK</key>
+    </option>
+    <option>
+        <name>QPSK</name>
+        <key>mapper.QPSK</key>
+    </option>
+    <option>
+        <name>8PSK</name>
+        <key>mapper.PSK8</key>
+    </option>
+  </param>
+
+  <param>
+    <name>Symbol Values</name>
+    <key>symbol_values</key>
+    <value>[0,1]</value>
+    <type>int_vector</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
