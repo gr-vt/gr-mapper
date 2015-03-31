@@ -25,7 +25,7 @@ install(FILES
     constellation.h
     mapper.h
     demapper.h
-    demapper.h
+    demapper_msg.h
     demapper_soft.h
     mapper_msg.h
     preamble_insert_bb.h
