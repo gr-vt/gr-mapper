@@ -4,7 +4,7 @@
   <key>mapper_demapper_msg</key>
   <category>mapper</category>
   <import>import mapper</import>
-  <make>mapper.mapper_msg($modtype, $symbol_values)</make>
+  <make>mapper.demapper_msg($modtype, $symbol_values)</make>
   <param>
     <name>Modulaton</name>
     <key>modtype</key>

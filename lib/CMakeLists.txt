@@ -30,6 +30,7 @@ list(APPEND mapper_sources
     demapper_impl.cc
     demapper_soft_impl.cc
     mapper_msg_impl.cc
+    demapper_msg_impl.cc
     preamble_insert_bb_impl.cc
     preamble_sync_cc_impl.cc
     pream_sync_correlator.cc

@@ -12,6 +12,7 @@
 #include "mapper/demapper.h"
 #include "mapper/demapper_soft.h"
 #include "mapper/mapper_msg.h"
+#include "mapper/demapper_msg.h"
 #include "mapper/preamble_insert_bb.h"
 #include "mapper/preamble_sync_cc.h"
 #include "mapper/preamble_generator.h"
@@ -32,6 +33,8 @@ GR_SWIG_BLOCK_MAGIC2(mapper, demapper);
 GR_SWIG_BLOCK_MAGIC2(mapper, demapper_soft);
 %include "mapper/mapper_msg.h"
 GR_SWIG_BLOCK_MAGIC2(mapper, mapper_msg);
+%include "mapper/demapper_msg.h"
+GR_SWIG_BLOCK_MAGIC2(mapper, demapper_msg);
 %include "mapper/preamble_insert_bb.h"
 GR_SWIG_BLOCK_MAGIC2(mapper, preamble_insert_bb);
 %include "mapper/preamble_sync_cc.h"
