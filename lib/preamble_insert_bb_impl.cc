@@ -46,8 +46,8 @@ namespace gr {
         d_data(preamble),
         d_offset(0)
     {
-      assert(offset < width);
-      assert(offset >= 0);
+      assert(d_offset < width);
+      assert(d_offset >= 0);
       assert((size_t)width > preamble.size());
       set_width(width);
     }
