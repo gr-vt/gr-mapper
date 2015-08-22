@@ -296,12 +296,12 @@ namespace gr {
     void preamble_sync_cc_impl::get_preamble_phase() {
       //gr_complex *desired;
       uint8_t *preamble = (uint8_t *) &d_preamble[0];
-      gr_complex preamble_map[int(d_preamble.size()/d_interp)];
+      std::vector<gr_complex> preamble_map(int(d_preamble.size()/d_interp));
       //printf("Preamble Sync - mapping.\n");
       //for(int ind = 0; ind<d_preamble.size(); ind++){ printf("in[%d] = %d\n",ind,preamble[ind]); }
       //printf("count = %d,\t",int(d_preamble.size() / d_interp));
       //printf("idx = %d \n",d_mapidx);
-      d_const.map(&preamble[0], preamble_map, int(d_preamble.size() / d_interp), d_mapidx);
+      d_const.map(&preamble[0], &preamble_map[0], int(d_preamble.size() / d_interp), d_mapidx);
       for(int idx = 0; idx < d_preamble.size()/d_interp; idx++){
         d_preamble_map.push_back(preamble_map[idx]);
       }
