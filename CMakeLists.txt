@@ -63,6 +63,32 @@ if(NOT Boost_FOUND)
     message(FATAL_ERROR "Boost required to compile mapper")
 endif()
 
+
+########################################################################
+# Setup the package config file
+########################################################################
+#set variables found in the pc.in file
+set(prefix ${CMAKE_INSTALL_PREFIX})
+set(exec_prefix "\${prefix}")
+set(libdir "\${exec_prefix}/lib${LIB_SUFFIX}")
+set(includedir "\${prefix}/include")
+set(grcdir "\${prefix}/share/gnuradio/grc/blocks/")
+set(GR_PKG_DATA_DIR "\${prefix}/share/gnuradio/")
+set(GRC_BLOCKS_DIR      ${GR_PKG_DATA_DIR}/grc/blocks)
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/mapper.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/mapper.pc
+@ONLY)
+
+
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/mapper.pc
+    DESTINATION lib${LIB_SUFFIX}/pkgconfig
+    COMPONENT "mapper_devel"
+)
+
+
 ########################################################################
 # Install directories
 ########################################################################
