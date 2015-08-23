@@ -218,7 +218,7 @@ namespace gr {
                 start_pointer = ii+1;
               }
 
-              gr_complex in_rotated[n_symbols];
+              std::vector<gr_complex> in_rotated(n_symbols);
 
               for(int idx = 0; idx < n_symbols; idx++){
                 in_rotated[idx] = in[start_pointer+idx] * exp(gr_complex(0,2*M_PI*d_offset/MN));
