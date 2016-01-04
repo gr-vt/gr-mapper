@@ -15,12 +15,15 @@ namespace gr {
     const int default_greymap_qpsk[4] = {0,1,3,2};
 //    const int default_greymap_psk8[8] = {7,6,2,3,1,0,4,5};
     const int default_greymap_psk8[8] = {0,1,3,2,7,6,4,5};
+    const int default_greymap_pam4[4] = {0,1,3,2};
 
     typedef enum {
         BPSK=0,
         P2BPSK=1,
         QPSK=2,
         PSK8=3,
+        PAM4=4,
+        QAM16=5
         } modtype_t;
 
     class MAPPER_API constellation {
@@ -64,9 +67,6 @@ namespace gr {
 
         };
           
-        //template<> void constellation::demap_impl<QPSK>::_demap_hard(const gr_complex* in, uint8_t *out, int nsymbols);
-        //template<> void constellation::demap_impl<BPSK>::_demap_hard(const gr_complex* in, uint8_t *out, int nsymbols);
-
   }
 }
 
