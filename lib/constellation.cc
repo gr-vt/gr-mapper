@@ -13,7 +13,14 @@ const gr_complex sym_qam16[]= {gr_complex(-3,3), gr_complex(-1,3), gr_complex(1,
                                gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1),
                                gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1),
                                gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3)};
-
+const gr_complex sym_qam64[]= {gr_complex(-7,7), gr_complex(-5,7), gr_complex(-3,7), gr_complex(-1,7), gr_complex(1,7), gr_complex(3,7), gr_complex(5,7), gr_complex(7,7),
+                               gr_complex(-7,5), gr_complex(-5,5), gr_complex(-3,5), gr_complex(-1,5), gr_complex(1,5), gr_complex(3,5), gr_complex(5,5), gr_complex(7,5),
+                               gr_complex(-7,3), gr_complex(-5,3), gr_complex(-3,3), gr_complex(-1,3), gr_complex(1,3), gr_complex(3,3), gr_complex(5,3), gr_complex(7,3),
+                               gr_complex(-7,1), gr_complex(-5,1), gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1), gr_complex(5,1), gr_complex(7,1),
+                               gr_complex(-7,-1), gr_complex(-5,-1), gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1), gr_complex(5,-1), gr_complex(7,-1),
+                               gr_complex(-7,-3), gr_complex(-5,-3), gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3), gr_complex(5,-3), gr_complex(7,-3),
+                               gr_complex(-7,-5), gr_complex(-5,-5), gr_complex(-3,-5), gr_complex(-1,-5), gr_complex(1,-5), gr_complex(3,-5), gr_complex(5,-5), gr_complex(7,-5),
+                               gr_complex(-7,-7), gr_complex(-5,-7), gr_complex(-3,-7), gr_complex(-1,-7), gr_complex(1,-7), gr_complex(3,-7), gr_complex(5,-7), gr_complex(7,-7)};
 
 #define SQUARED_DISTANCE(x,y)  (  ((x.real()-y.real())*(x.real()-y.real())) + ((x.imag()-y.imag())*(x.imag()-y.imag())) )
 
@@ -52,6 +59,10 @@ namespace gr {
             case QAM16:
                 d_wmaps.push_back( std::vector<gr_complex>( &sym_qam16[0], &sym_qam16[16] ) );
                 d_demapper = new demap_impl<QAM16>(this);
+                break;
+            case QAM64:
+                d_wmaps.push_back( std::vector<gr_complex>( &sym_qam64[0], &sym_qam64[64] ) );
+                d_demapper = new demap_impl<QAM64>(this);
                 break;
             default:
                 throw std::runtime_error("bad mod type durring init");

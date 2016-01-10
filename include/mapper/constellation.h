@@ -16,6 +16,9 @@ namespace gr {
 //    const int default_greymap_psk8[8] = {7,6,2,3,1,0,4,5};
     const int default_greymap_psk8[8] = {0,1,3,2,7,6,4,5};
     const int default_greymap_pam4[4] = {0,1,3,2};
+    const int default_greymap_qam16[16] = {2,6,14,10,3,7,15,11,1,5,13,9,0,4,12,8};
+    const int default_greymap_qam64[64] = {0,32,8,40,3,35,11,43,48,16,56,24,51,19,59,27,12,44,4,36,15,47,7,39,60,28,52,20,63,31,55,23,2,34,10,42,1,33,9,41,50,18,58,26,49,17,57,25,14,46,6,38,13,45,5,37,62,30,54,22,61,29,53,21};
+    
 
     typedef enum {
         BPSK=0,
@@ -23,7 +26,8 @@ namespace gr {
         QPSK=2,
         PSK8=3,
         PAM4=4,
-        QAM16=5
+        QAM16=5,
+        QAM64=6,
         } modtype_t;
 
     class MAPPER_API constellation {
