@@ -10,66 +10,75 @@ const gr_complex sym_qpsk[] = {gr_complex(1,0), gr_complex(0,1), gr_complex(-1,0
 const gr_complex sym_8psk[] = {gr_complex(1,0), gr_complex(M_SQRT1_2, M_SQRT1_2), gr_complex(0,1), gr_complex(-M_SQRT1_2, M_SQRT1_2), gr_complex(-1,0), gr_complex(-M_SQRT1_2, -M_SQRT1_2), gr_complex(0,-1), gr_complex(M_SQRT1_2, -M_SQRT1_2)};
 const gr_complex sym_pam4[] = {gr_complex(-3,0), gr_complex(-1,0), gr_complex(3,0), gr_complex(1,0)};
 const gr_complex sym_qam16[]= {gr_complex(-3,3), gr_complex(-1,3), gr_complex(1,3), gr_complex(3,3),
-                               gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1),
-                               gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1),
-                               gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3)};
+        gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1),
+        gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1),
+        gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3)};
 const gr_complex sym_qam64[]= {gr_complex(-7,7), gr_complex(-5,7), gr_complex(-3,7), gr_complex(-1,7), gr_complex(1,7), gr_complex(3,7), gr_complex(5,7), gr_complex(7,7),
-                               gr_complex(-7,5), gr_complex(-5,5), gr_complex(-3,5), gr_complex(-1,5), gr_complex(1,5), gr_complex(3,5), gr_complex(5,5), gr_complex(7,5),
-                               gr_complex(-7,3), gr_complex(-5,3), gr_complex(-3,3), gr_complex(-1,3), gr_complex(1,3), gr_complex(3,3), gr_complex(5,3), gr_complex(7,3),
-                               gr_complex(-7,1), gr_complex(-5,1), gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1), gr_complex(5,1), gr_complex(7,1),
-                               gr_complex(-7,-1), gr_complex(-5,-1), gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1), gr_complex(5,-1), gr_complex(7,-1),
-                               gr_complex(-7,-3), gr_complex(-5,-3), gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3), gr_complex(5,-3), gr_complex(7,-3),
-                               gr_complex(-7,-5), gr_complex(-5,-5), gr_complex(-3,-5), gr_complex(-1,-5), gr_complex(1,-5), gr_complex(3,-5), gr_complex(5,-5), gr_complex(7,-5),
-                               gr_complex(-7,-7), gr_complex(-5,-7), gr_complex(-3,-7), gr_complex(-1,-7), gr_complex(1,-7), gr_complex(3,-7), gr_complex(5,-7), gr_complex(7,-7)};
+        gr_complex(-7,5), gr_complex(-5,5), gr_complex(-3,5), gr_complex(-1,5), gr_complex(1,5), gr_complex(3,5), gr_complex(5,5), gr_complex(7,5),
+        gr_complex(-7,3), gr_complex(-5,3), gr_complex(-3,3), gr_complex(-1,3), gr_complex(1,3), gr_complex(3,3), gr_complex(5,3), gr_complex(7,3),
+        gr_complex(-7,1), gr_complex(-5,1), gr_complex(-3,1), gr_complex(-1,1), gr_complex(1,1), gr_complex(3,1), gr_complex(5,1), gr_complex(7,1),
+        gr_complex(-7,-1), gr_complex(-5,-1), gr_complex(-3,-1), gr_complex(-1,-1), gr_complex(1,-1), gr_complex(3,-1), gr_complex(5,-1), gr_complex(7,-1),
+        gr_complex(-7,-3), gr_complex(-5,-3), gr_complex(-3,-3), gr_complex(-1,-3), gr_complex(1,-3), gr_complex(3,-3), gr_complex(5,-3), gr_complex(7,-3),
+        gr_complex(-7,-5), gr_complex(-5,-5), gr_complex(-3,-5), gr_complex(-1,-5), gr_complex(1,-5), gr_complex(3,-5), gr_complex(5,-5), gr_complex(7,-5),
+        gr_complex(-7,-7), gr_complex(-5,-7), gr_complex(-3,-7), gr_complex(-1,-7), gr_complex(1,-7), gr_complex(3,-7), gr_complex(5,-7), gr_complex(7,-7)};
 
 #define SQUARED_DISTANCE(x,y)  (  ((x.real()-y.real())*(x.real()-y.real())) + ((x.imag()-y.imag())*(x.imag()-y.imag())) )
 
 namespace gr {
-  namespace mapper {
+        namespace mapper {
 
-    constellation::constellation(modtype_t modtype, std::vector<int> symbol_values, gr_complex scalar) :
-    d_modtype(modtype),
-    d_scalar(scalar),
-    d_symbol_values(symbol_values)
-    {
-        switch(d_modtype){
-            case BPSK:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk[0], &sym_bpsk[2] ) );
-                d_demapper = new demap_impl<BPSK>(this);
-                break;
-            case P2BPSK:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk[0], &sym_bpsk[2] ) );
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk_off[0], &sym_bpsk_off[2] ) );
-                d_demapper = new demap_impl<P2BPSK>(this);
-                break;
-            case QPSK:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_qpsk[0], &sym_qpsk[4] ) );
-                // rotate to pi/4 qpsk
-                for(int i=0; i <4; i++){ d_wmaps[0][i] *= gr_complex(M_SQRT1_2, M_SQRT1_2); }
-                d_demapper = new demap_impl<QPSK>(this);
-                break;
-            case PSK8:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_8psk[0], &sym_8psk[8] ) );
-                d_demapper = new demap_impl<PSK8>(this);
-                break;
-            case PAM4:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_pam4[0], &sym_pam4[4] ) );
-                d_demapper = new demap_impl<PAM4>(this);
-                break;
-            case QAM16:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_qam16[0], &sym_qam16[16] ) );
-                d_demapper = new demap_impl<QAM16>(this);
-                break;
-            case QAM64:
-                d_wmaps.push_back( std::vector<gr_complex>( &sym_qam64[0], &sym_qam64[64] ) );
-                d_demapper = new demap_impl<QAM64>(this);
-                break;
-            default:
-                throw std::runtime_error("bad mod type durring init");
-        }
+                constellation::constellation(modtype_t modtype, std::vector<int> symbol_values, gr_complex scalar) :
+                        d_modtype(modtype),
+                        d_scalar(scalar),
+                        d_symbol_values(symbol_values)
+                {
+                        switch(d_modtype){
+                                case BPSK:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk[0], &sym_bpsk[2] ) );
+                                        d_demapper = new demap_impl<BPSK>(this);
+                                        break;
+                                case P2BPSK:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk[0], &sym_bpsk[2] ) );
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_bpsk_off[0], &sym_bpsk_off[2] ) );
+                                        d_demapper = new demap_impl<P2BPSK>(this);
+                                        break;
+                                case QPSK:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_qpsk[0], &sym_qpsk[4] ) );
+                                        // rotate to pi/4 qpsk
+                                        for(int i=0; i <4; i++){ d_wmaps[0][i] *= gr_complex(M_SQRT1_2, M_SQRT1_2); }
+                                        d_demapper = new demap_impl<QPSK>(this);
+                                        break;
+                                case PSK8:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_8psk[0], &sym_8psk[8] ) );
+                                        d_demapper = new demap_impl<PSK8>(this);
+                                        break;
+                                case PAM4:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_pam4[0], &sym_pam4[4] ) );
+                                        d_demapper = new demap_impl<PAM4>(this);
+                                        break;
+                                case QAM16:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_qam16[0], &sym_qam16[16] ) );
+                                        d_demapper = new demap_impl<QAM16>(this);
+                                        break;
+                                case QAM64:
+                                        d_wmaps.push_back( std::vector<gr_complex>( &sym_qam64[0], &sym_qam64[64] ) );
+                                        d_demapper = new demap_impl<QAM64>(this);
+                                        break;
+                                default:
+                                        throw std::runtime_error("bad mod type durring init");
+                        }
 
-        d_bps = log2(d_wmaps[0].size());
-        d_mapidx_max = d_wmaps.size();
+                        d_bps = log2(d_wmaps[0].size());
+                        d_mapidx_max = d_wmaps.size();
+
+
+                        // normalize constellation power to 1
+                        for(int j=0; j< d_wmaps.size(); j++){
+                            float avgp = 0;
+                            for(int i=0; i<d_wmaps[j].size(); i++){ avgp = std::sqrt((d_wmaps[j][i] * std::conj(d_wmaps[j][i])).real()); }
+                            float scale = d_wmaps[j].size() / avgp;
+                            for(int i=0; i<d_wmaps[j].size(); i++){ d_wmaps[j][i] = d_wmaps[j][i] * scale; }
+                        }
         
         // * do a bit of input validation
 
@@ -88,6 +97,8 @@ namespace gr {
             // set up reverse mapping
             d_symbol_values_rev[ symbol_values[i] ] = i;
         }
+
+        // 
 
         // perform white map to grey map translation ...
         for(int i=0; i<d_wmaps.size(); i++){
