@@ -291,7 +291,7 @@ namespace gr {
                
                 // approximate llr from  ln(e^(max(p1))/e^(max(p0)))
                 LLR = (p1 - p0);
-                if(isnan(LLR) || (LLR > 100))
+                if(std::isnan(LLR) || (LLR > 100))
                     LLR = 100.0f;
                 if(LLR < -100)
                     LLR = -100;
