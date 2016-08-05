@@ -38,6 +38,13 @@ if(NOT CMAKE_CROSSCOMPILING AND LINUX AND EXISTS "/etc/redhat-release")
 endif()
 
 ########################################################################
+# Detect /lib versus /lib64
+########################################################################
+if (CMAKE_INSTALL_LIBDIR MATCHES lib64)
+    set(LIB_SUFFIX 64)
+endif()
+
+########################################################################
 # when the library suffix should be 64 (applies to redhat linux family)
 ########################################################################
 if(NOT DEFINED LIB_SUFFIX AND REDHAT AND CMAKE_SYSTEM_PROCESSOR MATCHES "64$")

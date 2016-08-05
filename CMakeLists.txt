@@ -68,6 +68,7 @@ endif()
 # Setup the package config file
 ########################################################################
 #set variables found in the pc.in file
+include(GrPlatform) #define LIB_SUFFIX
 set(prefix ${CMAKE_INSTALL_PREFIX})
 set(exec_prefix "\${prefix}")
 set(libdir "\${exec_prefix}/lib${LIB_SUFFIX}")
@@ -92,7 +93,6 @@ install(
 ########################################################################
 # Install directories
 ########################################################################
-include(GrPlatform) #define LIB_SUFFIX
 set(GR_RUNTIME_DIR      bin)
 set(GR_LIBRARY_DIR      lib${LIB_SUFFIX})
 set(GR_INCLUDE_DIR      include/mapper)
@@ -178,5 +178,5 @@ add_subdirectory(docs)
 # Install cmake search helper for this library
 ########################################################################
 install(FILES cmake/Modules/mapperConfig.cmake        
-    DESTINATION lib/cmake/mapper
+    DESTINATION lib${LIB_SUFFIX}/cmake/mapper
 )
