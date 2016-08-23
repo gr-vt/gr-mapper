@@ -61,11 +61,11 @@
     <type>enum</type>
       <option>
         <name>Yes</name>
-        <key>1</key>
+        <key>True</key>
       </option>
       <option>
         <name>No</name>
-        <key>0</key>
+        <key>False</key>
       </option>
   </param>
 
