@@ -75,7 +75,7 @@ namespace gr {
                         // normalize constellation power to 1
                         for(int j=0; j< d_wmaps.size(); j++){
                             float avgp = 0;
-                            for(int i=0; i<d_wmaps[j].size(); i++){ avgp = std::sqrt((d_wmaps[j][i] * std::conj(d_wmaps[j][i])).real()); }
+                            for(int i=0; i<d_wmaps[j].size(); i++){ avgp += std::sqrt((d_wmaps[j][i] * std::conj(d_wmaps[j][i])).real()); }
                             float scale = d_wmaps[j].size() / avgp;
                             for(int i=0; i<d_wmaps[j].size(); i++){ d_wmaps[j][i] = d_wmaps[j][i] * scale; }
                         }
