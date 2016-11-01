@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<block>
+  <name>PRBS Sink B</name>
+  <key>mapper_prbs_sink_b</key>
+  <category>[mapper]</category>
+  <import>import mapper</import>
+  <make>mapper.prbs_sink_b($which_mode, $reset_len)</make>
+
+  <param>
+    <name>PRBS Sequence</name>
+    <key>which_mode</key>
+    <value>"PRBS31"</value>
+    <type>enum</type>
+    <option>
+      <name>PRBS7</name>
+      <key>"PRBS7"</key>
+    </option>
+    <option>
+      <name>PRBS15</name>
+      <key>"PRBS15"</key>
+    </option>
+    <option>
+      <name>PRBS23</name>
+      <key>"PRBS23"</key>
+    </option>
+    <option>
+      <name>PRBS31</name>
+      <key>"PRBS31"</key>
+    </option>
+  </param>
+
+  <param>
+    <name>reset_len</name>
+    <key>reset_len</key>
+    <value>100000</value>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+</block>

@@ -31,6 +31,9 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
+    prbs_base.py
+    prbs_sink_b.py
+    prbs_source_b.py 
     DESTINATION ${GR_PYTHON_DIR}/mapper
 )
 
