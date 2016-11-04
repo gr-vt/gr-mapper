@@ -374,7 +374,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 136)</value>
+      <value>(312, 132)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -429,7 +429,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>epsilon</key>
@@ -441,7 +441,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(832, 364)</value>
+      <value>(960, 376)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -531,7 +531,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(184, 364)</value>
+      <value>(184, 376)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -594,7 +594,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(512, 376)</value>
+      <value>(456, 376)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -676,7 +676,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(744, 128)</value>
+      <value>(752, 124)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -723,7 +723,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(760, 576)</value>
+      <value>(760, 580)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -762,7 +762,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(40, 128)</value>
+      <value>(48, 124)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -809,7 +809,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(520, 128)</value>
+      <value>(528, 124)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -864,7 +864,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(88, 532)</value>
+      <value>(88, 544)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -931,7 +931,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(528, 456)</value>
+      <value>(416, 476)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1621,7 +1621,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(520, 928)</value>
+      <value>(520, 796)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1836,7 +1836,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1008, 92)</value>
+      <value>(1008, 96)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1875,6 +1875,77 @@
       <value>samp_rate/samp_per_sym</value>
     </param>
   </block>
+  <block>
+    <key>root_raised_cosine_filter</key>
+    <param>
+      <key>alpha</key>
+      <value>0.35</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>interp_fir_filter_ccf</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(728, 368)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>root_raised_cosine_filter_0_0</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>samp_per_sym*0+1</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>ntaps</key>
+      <value>11</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>sym_rate</key>
+      <value>samp_rate/samp_per_sym</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>blocks_throttle_0</source_block_id>
     <sink_block_id>mapper_preamble_insert_bb_0</sink_block_id>
@@ -1883,13 +1954,7 @@
   </connection>
   <connection>
     <source_block_id>channels_channel_model_0</source_block_id>
-    <sink_block_id>digital_costas_loop_cc_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>channels_channel_model_0</source_block_id>
-    <sink_block_id>qtgui_const_sink_x_0</sink_block_id>
+    <sink_block_id>root_raised_cosine_filter_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1950,6 +2015,18 @@
   <connection>
     <source_block_id>root_raised_cosine_filter_0</source_block_id>
     <sink_block_id>channels_channel_model_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>root_raised_cosine_filter_0_0</source_block_id>
+    <sink_block_id>digital_costas_loop_cc_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>root_raised_cosine_filter_0_0</source_block_id>
+    <sink_block_id>qtgui_const_sink_x_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
