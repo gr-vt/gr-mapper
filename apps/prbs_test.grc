@@ -461,7 +461,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>(10**(-SNR/20.0))/samp_per_sym</value>
+      <value>(10**(-SNR/20.0))*np.sqrt(samp_per_sym)</value>
     </param>
     <param>
       <key>seed</key>
@@ -653,7 +653,7 @@
     </param>
     <param>
       <key>import</key>
-      <value>from cmath import exp, pi; from random import randint;</value>
+      <value>from cmath import exp, pi; from random import randint; import numpy as np;</value>
     </param>
   </block>
   <block>
