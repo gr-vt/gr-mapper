@@ -135,9 +135,11 @@ namespace gr {
             uint16_t idx(0);
             for(int j=0; j<d_bps; j++){
                 // sanity check - hopefully this does not slow things down too much
+#ifndef _MSC_VER
                 if(__builtin_expect( in[i*d_bps + j] > 0x01, false)){
                     throw std::runtime_error((boost::format("ERROR: constellation mapper expects values of 0x00 and 0x01 in *ONLY* - received 0x%02x at bit offset %d!")% ((int)(in[i*d_bps+j]))%(d_bps*i)).str());
                 }
+#endif // !_MSC_VER
                 idx |= (in[i*d_bps + j] << (d_bps - j-1));
             }
             out[i] = d_mappings[mapidx][idx];
