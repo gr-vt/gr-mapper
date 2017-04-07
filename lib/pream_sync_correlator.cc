@@ -46,7 +46,7 @@ namespace gr {
         d_in_stream.push_back(gr_complex(0,0));
       }
       d_in_stream.push_back(gr_complex(0,0));
-      float phase[N];
+      __GR_VLA(float, phase, N);
       for(int idx = 1; idx < N; idx++){
         phase[idx] = arg(d_preamble_symbols[idx]);
       }
@@ -99,13 +99,13 @@ namespace gr {
     }
 
     float pream_sync_correlator::acquire_value(void){
-      float phase[d_preamble_symbol_count];
+      __GR_VLA(float, phase, d_preamble_symbol_count);
       for(int idx=0; idx < d_preamble_symbol_count; idx++){
         phase[idx] = arg(d_in_stream[d_preamble_symbol_count - 1 - idx]);
 //          printf("\t1: sa[%02d] = (%02.4f,%02.4f), phase[%02d] = %02.4f\n",idx,small_array[idx].real(),small_array[idx].imag(),idx,phase[idx]);
       }
       unwrap(phase, d_preamble_symbol_count);
-      float phase_change[d_preamble_symbol_count];
+      __GR_VLA(float, phase_change, d_preamble_symbol_count);
       float phase_diff = 0.0;//[d_preamble_symbol_count-1];
       phase_change[0] = 0.0;
 //      phase_diff[idx] = 0.0;
@@ -132,10 +132,10 @@ namespace gr {
     }
     
     void pream_sync_correlator::unwrap(float *phase_array, int N) {
-      float dp[N];
-      float dps[N];
-      float dp_corr[N];
-      float cumsum[N];
+      __GR_VLA(float, dp, N);
+      __GR_VLA(float, dps, N);
+      __GR_VLA(float, dp_corr, N);
+      __GR_VLA(float, cumsum, N);
       float cutoff = M_PI;
       int j;
 
