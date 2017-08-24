@@ -42,7 +42,7 @@ list(APPEND mapper_sources
 )
 
 add_library(gnuradio-mapper SHARED ${mapper_sources})
-target_link_libraries(gnuradio-mapper ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+target_link_libraries(gnuradio-mapper ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES} ${LOG4CPP_LIBRARIES})
 set_target_properties(gnuradio-mapper PROPERTIES DEFINE_SYMBOL "gnuradio_mapper_EXPORTS")
 
 ########################################################################
