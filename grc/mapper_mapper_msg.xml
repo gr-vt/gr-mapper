@@ -25,6 +25,18 @@
         <name>8PSK</name>
         <key>mapper.PSK8</key>
     </option>
+    <option>
+        <name>QAM16</name>
+        <key>mapper.QAM16</key>
+    </option>
+    <option>
+        <name>QAM64</name>
+        <key>mapper.QAM64</key>
+    </option> 
+    <option>
+        <name>PAM4</name>
+        <key>mapper.PAM4</key>
+    </option>
   </param>
 
   <param>
