@@ -99,7 +99,7 @@ namespace gr {
         int search_space = (int) d_preamble.size()/d_interp;
         int data_space = d_width/d_interp - search_space;
         int payload_space = d_width/d_interp;
-        float phase[search_space];
+        __GR_VLA(float, phase, search_space);
         if(d_early_term) {
           d_corr.reset();
           d_state = 0;
@@ -307,12 +307,12 @@ namespace gr {
       }
       //for(int ind = 0; ind<d_preamble.size()/d_interp; ind++){ printf("d_preamble_map[%d] = (%f, %f)\n",ind,d_preamble_map[ind].real(),d_preamble_map[ind].imag()); }
       d_mapidx = (d_mapidx + d_preamble.size()/d_interp)%d_const.nmaps();
-      float phase[int(d_preamble.size()/d_interp)];
+      __GR_VLA(float, phase, int(d_preamble.size() / d_interp));
       for(int idx = 0; idx < d_preamble.size()/d_interp; idx++){
         phase[idx] = arg(d_preamble_map[idx]);
       }
       unwrap(phase,(int)d_preamble.size()/d_interp);
-      float phase_change[d_preamble.size()/d_interp];
+      __GR_VLA(float, phase_change, d_preamble.size() / d_interp);
       phase_change[0] = 0.0;
       for(int ind = 1; ind < d_preamble.size()/d_interp; ind++) {
         phase_change[ind] = phase[ind] - phase[ind-1];
@@ -323,10 +323,10 @@ namespace gr {
     }
     
     void preamble_sync_cc_impl::unwrap(float *phase_array, int N) {
-      float dp[N];
-      float dps[N];
-      float dp_corr[N];
-      float cumsum[N];
+      __GR_VLA(float, dp, N);
+      __GR_VLA(float, dps, N);
+      __GR_VLA(float, dp_corr, N);
+      __GR_VLA(float, cumsum, N);
       float cutoff = M_PI;
       int j;
 

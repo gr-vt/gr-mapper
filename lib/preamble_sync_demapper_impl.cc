@@ -149,7 +149,7 @@ namespace gr {
               }
               //printf("Compare has shifted.\t Pream_len = %d\n",pream_len);
               for(int idx=0; idx < MN; idx++){
-                uint8_t symbol_bits[d_bps];
+                __GR_VLA(uint8_t, symbol_bits, d_bps);
                 gr_complex symbol = in[ii] * exp(gr_complex(0,2*M_PI*idx/MN));
                 d_const.demap_hard(&symbol, &symbol_bits[0], 1);
                 for(int ind = d_bps; ind > 0; ind--){
@@ -158,7 +158,7 @@ namespace gr {
                 }
               }
               //printf("Compare has updated.\n");
-              int ham_dist[MN];
+              __GR_VLA(int, ham_dist, MN);
               for(int idx=0; idx < MN; idx++){ ham_dist[idx] = 0; }
               for(int idx=0; idx < MN; idx++){
                 //printf("idx = %d of MN = %d\t",idx,MN);
@@ -223,7 +223,7 @@ namespace gr {
               for(int idx = 0; idx < n_symbols; idx++){
                 in_rotated[idx] = in[start_pointer+idx] * exp(gr_complex(0,2*M_PI*d_offset/MN));
               }
-              float soft_out[n_symbols*d_bps];
+              __GR_VLA(float, soft_out, n_symbols * d_bps);
               d_const.demap_soft(&in_rotated[0], &soft_out[0], n_symbols);
               //uint8_t hard_out[n_symbols*d_bps];
               //d_const.demap_hard(&in_rotated[0], &hard_out[0], n_symbols);
