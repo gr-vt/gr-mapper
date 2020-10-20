@@ -31,9 +31,9 @@ try:
     from dl import RTLD_GLOBAL as _RTLD_GLOBAL
 except ImportError:
     try:
-	from DLFCN import RTLD_GLOBAL as _RTLD_GLOBAL
+        from DLFCN import RTLD_GLOBAL as _RTLD_GLOBAL
     except ImportError:
-	pass
+        pass
 
 if _RTLD_GLOBAL != 0:
     _dlopenflags = sys.getdlopenflags()
@@ -42,11 +42,16 @@ if _RTLD_GLOBAL != 0:
 
 
 # import swig generated symbols into the mapper namespace
-from mapper_swig import *
+try:
+    # this might fail if the module is python-only
+    from .mapper_swig import *
+except ImportError:
+    pass
 
 # import any pure python here
-from prbs_source_b import prbs_source_b
-from prbs_sink_b import prbs_sink_b
+from .prbs_base import prbs_base
+from .prbs_source_b import prbs_source_b
+from .prbs_sink_b import prbs_sink_b
 #
 
 # ----------------------------------------------------------------
