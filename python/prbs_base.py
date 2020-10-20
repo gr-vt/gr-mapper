@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import numpy as np
 import operator,copy
+from functools import reduce
 
 class prbs_base:
     modes = {
@@ -54,7 +55,7 @@ class prbs_base:
 if __name__ == "__main__":
     m = prbs_base()
     v = m.gen_n(1000)
-    print v
+    print(v)
         
 
 

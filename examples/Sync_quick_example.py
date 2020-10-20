@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
@@ -64,17 +64,17 @@ tb.start()
 sleep(1)
 tb.stop()
     
-print "preamble", pream
+print ("preamble", pream)
 sd = src_sink.data()
-print "source data", len(sd)
+print ("source data", len(sd))
 pd = pre_sink.data()
-print "bit stream", len(pd)
+print ("bit stream", len(pd))
 sy = sym_sink.data()
-print "symbols", len(sy)
+print ("symbols", len(sy))
 sn = snc_sink.data()
-print "sync symbols", len(sn)
+print ("sync symbols", len(sn))
 rd = rec_sink.data()
-print "recoved", len(rd)
+print ("recoved", len(rd))
 
 first_data = []
 check_data = []
@@ -89,6 +89,6 @@ for x in range(0,poss):
 #for x in range(0,poss):
 #  print first_data[x] == check_data[x]
 
-print first_data == check_data
+print (first_data == check_data)
 
 
